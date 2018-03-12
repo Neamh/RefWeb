@@ -1,0 +1,35 @@
+﻿@model RefProfileViewModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData.AddActivePage(ManageNavPages.RefProfile);
+}
+
+<h4>@ViewData["Title"]</h4>
+@Html.Partial("_StatusMessage", Model.StatusMessage)
+
+<h2>Ref Profile of @Model.UserName</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+             <div class="form-group">
+                <label asp-for="UserName"></label>
+                <input asp-for="UserName" class="form-control" disabled />
+            </div>           
+            <div class="form-group">
+                <label asp-for="LicenseNumber"></label>
+                <input asp-for="LicenseNumber" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LicenseLevel"></label>
+                <input asp-for="LicenseLevel" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-default">Save</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
